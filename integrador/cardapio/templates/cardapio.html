@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'head' %}
+
+  <link rel="stylesheet" href="{% static 'general/css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'general/css/general.css' %}">
+  <link rel="stylesheet" href="{% static 'cardapio/css/cardapio.css' %}">
+  <style>
+    .card {
+      width: 100%;
+    }
+  </style>
+{% endblock %}
+{% block 'body' %}
+
+<!-- <div class="p-3 mb-2 bg-dark text-white"> --> 
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for pratos in prato %}
+      <div id="c5" class="col">
+        <div onclick="exibir_form('1')" class="card">
+          <img src="{% static ''|add:pratos.foto.url %}" class="card-img-top" alt="...">
+        <!--  <img src="{{ pratos.foto.url }}" class="card-img-top" alt="..."> -->
+          <div class="card-body">
+            <h5 class="card-title" value="{{ingrediente.id}}">{{ pratos.nome_prato }}</h5>
+            <p>Ingredientes: 
+              {% for cardapio in pratos.cardapio_set.all %}
+              {{ cardapio.Ingrediente.nome }}{% if not forloop.last %}, {% endif %}
+              {% endfor %}
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div id="cardapio_teste" onclick="exibir_form('3')">
+      <h5 class="card-title">Você clicou no prato</h5>
+      <select onchange="exibir_form('2')">
+        {% for ingrediente in prato %}
+        <option value="{{ingrediente.id}}">{{ingrediente}}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+<!-- </div> -->
+<script src="{% static 'cardapio/js/cardapio.js' %}"></script>  
+{% endblock %}

@@ -1,0 +1,41 @@
+
+.container-fluid {
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    background-color: #543232;
+  }
+
+  .navbar {
+    flex-basis: 80px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-direction: column;
+    background-color: #946060;
+  }
+
+  .navbar-brand {
+    padding: 1rem;
+    text-align: center;
+    background-color: #543232;
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-top: 1rem;
+    background-color: #543232;
+  }
+
+  .nav-link {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    background-color: #543232;
+  }
+
+  .content {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: #221515;
+  }
